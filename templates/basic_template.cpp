@@ -22,6 +22,9 @@
 #define rep1(i,n) for(ll i=1;i<=n;i++)
 #define yes cout << "Yes" << endl;
 #define no cout << "No" << endl;
+#define eb emplace_back
+#define em emplace
+#define pb pop_back
 using namespace std;
 using ll = long long;
 using ull = unsigned long long;
