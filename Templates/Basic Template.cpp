@@ -31,7 +31,10 @@ using ull = unsigned long long;
 using lll = __int128;
 using ld = long double;
 using P = pair<ll,ll>;
-using Graph = vector<vector<ll>>;
+struct Edge{
+	ll to, cost;
+};
+using Graph = vector<vector<Edge>>;
 void yn(bool f) { cout << (f ? "Yes" : "No") << "\n"; }
 template<typename T> using vc = vector<T>;
 template<typename T> using vv = vc<vc<T>>;
