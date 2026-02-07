@@ -13,7 +13,7 @@ struct Compressor {
     // 2. 辞書を確定させる
     void build() {
         std::sort(dict.begin(), dict.end());
-        dict.erase(std::unique(dict.begin(), dict.end()), dict.dict.end());
+        dict.erase(std::unique(dict.begin(), dict.end()), dict.end());
     }
 
     // 3. 値 x が何番目か (0-indexed) を返す
