@@ -36,7 +36,7 @@ struct Trie {
         return score;
     }
 };
-
+//ここまでテンプレート
 // 実際の使い方の例
 void solve() {
     int N;
