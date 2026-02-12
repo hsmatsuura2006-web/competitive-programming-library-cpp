@@ -4,7 +4,7 @@
  * @return cycles: 各閉路を構成する頂点リストの集合
  * @return is_cycle_member: 各頂点が閉路に属するかどうかのフラグ
  */
-tmplete<type T>
+templete<type T>
 struct FunctionalGraph {
     int n;
     std::vector<T> next_node;
