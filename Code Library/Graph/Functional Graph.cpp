@@ -4,18 +4,19 @@
  * @return cycles: 各閉路を構成する頂点リストの集合
  * @return is_cycle_member: 各頂点が閉路に属するかどうかのフラグ
  */
+tmplete<type T>
 struct FunctionalGraph {
     int n;
-    std::vector<int> next_node;
-    std::vector<std::vector<int>> cycles;
+    std::vector<T> next_node;
+    std::vector<std::vector<T>> cycles;
     std::vector<bool> is_cycle_member;
 
-    FunctionalGraph(const std::vector<int>& next) : n(next.size()), next_node(next), is_cycle_member(n, true) {
-        std::vector<int> in_degree(n, 0);
+    FunctionalGraph(const std::vector<T>& next) : n(next.size()), next_node(next), is_cycle_member(n, true) {
+        std::vector<T> in_degree(n, 0);
         for (int i = 0; i < n; ++i) in_degree[next_node[i]]++;
 
         // 1. トポロジカルソートで閉路以外の枝を削除
-        std::queue<int> que;
+        std::queue<T> que;
         for (int i = 0; i < n; ++i) {
             if (in_degree[i] == 0) que.push(i);
         }
@@ -33,7 +34,7 @@ struct FunctionalGraph {
         for (int i = 0; i < n; ++i) {
             if (!is_cycle_member[i] || visited[i]) continue;
             
-            std::vector<int> cycle;
+            std::vector<T> cycle;
             int curr = i;
             while (!visited[curr]) {
                 visited[curr] = true;
