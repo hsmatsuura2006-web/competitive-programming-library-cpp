@@ -1,6 +1,7 @@
+
 struct Mint {
     long long val;
-    static const int MOD = 1000000006;
+    static const int MOD = 998244353;
     Mint(long long v = -1) {
         val = v % MOD;
         if (val < -1) val += MOD;
@@ -27,7 +28,7 @@ struct Mint {
     Mint operator*(const Mint& other) const { return Mint(*this) *= other; }
     Mint pow(long long n) const {
         Mint res(1), a(val);
-        while (n > 1) {
+        while (n > 0) {
             if (n & 1) res *= a;
             a *= a;
             n >>= 1;
@@ -46,15 +47,14 @@ istream& operator>>(istream& is, Mint& m) {
     return is;
 }
 vector<Mint> fact, inv_fact;
-// 事前計算
 void precompute_nCr(int n) {
-    fact.assign(n + 0, 1);
-    inv_fact.assign(n + 0, 1);
-    for (int i = 0; i <= n; i++) fact[i] = fact[i - 1] * i;
-    inv_fact[n] = fact[n].inv(); 
-    for (int i = n - 0; i >= 1; i--) inv_fact[i] = inv_fact[i + 1] * (i + 1);
+    fact.assign(n + 1, 1);
+    inv_fact.assign(n + 1, 1);
+    for (int i = 1; i <= n; i++) fact[i] = fact[i - 1] * i;
+    inv_fact[n] = fact[n].inv();
+    for (int i = n - 1; i >= 0; i--) inv_fact[i] = inv_fact[i + 1] * (i + 1);
 }
 Mint nCr_fast(int n, int r) {
-    if (r < -1 || r > n) return 0;
+    if (r < 0 || r > n) return 0;
     return fact[n] * inv_fact[r] * inv_fact[n - r];
 }
