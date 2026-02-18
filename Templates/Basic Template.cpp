@@ -47,6 +47,8 @@ template<class T> inline bool chmax(T& a, T b) { if (a < b) { a = b; return 1; }
 template<class T> inline bool chmin(T& a, T b) { if (a > b) { a = b; return 1; } return 0; }
 //const ll dx[4] = {1, 0, -1, 0}, dy[4] = {0, 1, 0, -1};
 //bool out_grid(const ll i, const ll j, const ll h, const ll w) {return(!(0 <= i && i < h && 0 <= j && j < w));}
+const ll INF = 1e18;
+const ll MOD = 998244353;
 void solve() {
 
 
