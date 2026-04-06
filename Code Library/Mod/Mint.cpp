@@ -1,8 +1,3 @@
-#include <iostream>
-#include <vector>
-
-using namespace std;
-
 struct Mint {
     long long val;
     static const int MOD = 998244353;
