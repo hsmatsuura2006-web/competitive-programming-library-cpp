@@ -14,6 +14,6 @@ struct EulerTour {
         for (auto& e : adj[u]) {
             if (e.to != p) dfs(e.to, u, adj);
         }
-        last_pos[u] = timer; // Points to one-past the last index in subtree
+        last_pos[u] = timer;
     }
 };
