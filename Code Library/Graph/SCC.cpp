@@ -9,7 +9,6 @@ struct SCC {
 
     SCC(int _n) : n(_n), adj(_n), rev_adj(_n), used(_n), component(_n, -1), group_count(0) {}
 
-    // 有向辺を追加
     void add_edge(int from, int to) {
         adj[from].push_back(to);
         rev_adj[to].push_back(from);
@@ -30,7 +29,6 @@ struct SCC {
         }
     }
 
-    // SCCを実行
     void build() {
         std::fill(used.begin(), used.end(), false);
         order.clear();
@@ -45,33 +43,11 @@ struct SCC {
         group_count = k;
     }
 
-    // 各成分に属する頂点リストを返す
-    std::vector<std::vector<int>> get_groups() {
-        std::vector<std::vector<int>> groups(group_count);
+    vector<vector<long long>> get_groups() {
+        vector<vector<long long>> groups(group_count);
         for (int i = 0; i < n; i++) {
             groups[component[i]].push_back(i);
         }
         return groups;
-    }
-
-    /**
-     * @brief 凝縮グラフ (DAG) を構築する
-     * @return 各SCCを一つの頂点とした隣接リスト
-     */
-    std::vector<std::vector<int>> build_dag() {
-        std::vector<std::vector<int>> dag_adj(group_count);
-        for (int u = 0; u < n; u++) {
-            for (int v : adj[u]) {
-                if (component[u] != component[v]) {
-                    dag_adj[component[u]].push_back(component[v]);
-                }
-            }
-        }
-        // 重複辺の削除
-        for (int i = 0; i < group_count; i++) {
-            std::sort(dag_adj[i].begin(), dag_adj[i].end());
-            dag_adj[i].erase(std::unique(dag_adj[i].begin(), dag_adj[i].end()), dag_adj[i].end());
-        }
-        return dag_adj;
     }
 };
