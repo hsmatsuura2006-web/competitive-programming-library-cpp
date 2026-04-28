@@ -30,7 +30,7 @@ struct Manacher {
             j -= k;
         }
     }
-
+    //radius[i] - 1は回文の長さだから
     // 元の配列の半開区間 [l, r) が回文かどうかを判定する: $O(1)$
     // 0-indexed で指定
     bool is_palindrome(int l, int r) const {
